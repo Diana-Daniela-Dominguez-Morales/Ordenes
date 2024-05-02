@@ -1,0 +1,41 @@
+﻿@model List<OrderHedModel>
+@{
+    ViewData["Title"] = "Purchase order";
+}
+
+
+<div class="text-center">
+    <h1 class="display-4">Orden de pedido</h1>
+</div>
+
+<div class="container-fluid">
+    <form class="d-flex" id="folioForm" action="/Order/ShowDetails" method="post">
+        <label for="selectFolios" class="form-label">Número de orden</label>
+        <select id="selectFolios" class="form-select" aria-label="Select Folio" onchange="printSelectedFolio()">
+            @foreach (var folio in ViewBag.Folios)
+            {
+                <option value="@folio">@folio</option>
+            }
+        </select>
+
+        <button class="btn btn-outline-success" type="submit">Buscar</button>
+    </form>
+    <div class="row">
+        
+        <div class="col-6">
+            <h1>Datos  del folio</h1>
+           
+
+        </div>
+        <div class="col-6">
+
+        </div>
+    </div>
+</div>
+
+<script>
+    function printSelectedFolio() {
+        var selectedFolio = document.getElementById("selectFolios").value;
+        console.log("Folio seleccionado: " + selectedFolio);
+    }
+</script>

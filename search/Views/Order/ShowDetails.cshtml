@@ -1,0 +1,56 @@
+﻿@model List<OrderHedModel>
+
+@{
+    ViewData["Title"] = "Details for Folio";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Detalles del folio</h1>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-6">
+            @if (Model.Any())
+            {
+                var firstDetail = Model.First();
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control" id="floatingInput" value=@firstDetail.Folio disabled >
+                    <label for="floatingInput" disabled>Número de orden</label>
+                </div>
+                <div class="form-floating  mb-3">
+                    <input type="text" class="form-control" id="floatingPassword" value=@firstDetail.Fecha disabled >
+                    <label for="floatingInput">Fecha</label>
+                </div>
+                <div class="form-floating  mb-3">
+                    <input type="text" class="form-control" id="floatingPassword" value=@firstDetail.Direccion disabled >
+                    <label for="floatingInput">Direccion</label>
+                </div>
+            }
+        </div>
+
+        <div class="col-6">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Cantidad</th>
+                        <th>Descripción</th>
+                        <th>Tipo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var detail in Model)
+                    {
+                        <tr>
+                            <td>@detail.Producto</td>
+                            <td>@detail.Cantidad</td>
+                            <td>@detail.Descripcion</td>
+                            <td>@detail.Tipo</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
